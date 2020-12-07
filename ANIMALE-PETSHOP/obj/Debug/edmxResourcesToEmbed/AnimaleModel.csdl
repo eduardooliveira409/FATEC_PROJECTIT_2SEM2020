@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AnimaleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AGENDAMENTO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DATA_AGENDAMENTO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="HORA_AGENDAMENTO" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CODIGO_SERVICO" Type="Int32" Nullable="false" />
+    <Property Name="CODIGO_PET" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PET" Relationship="Self.FK_HORARIO_PET" FromRole="AGENDAMENTO" ToRole="PET" />
+    <NavigationProperty Name="SERVICO" Relationship="Self.FK_HORARIO_SERVICO" FromRole="AGENDAMENTO" ToRole="SERVICO" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME_CLI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATA_NASCIMENTO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CPF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PET" Relationship="Self.FK_CLIENTE_PET" FromRole="CLIENTE" ToRole="PET" />
+  </EntityType>
+  <EntityType Name="FUNCIONARIO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME_FUN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATA_NASCIMENTO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CPF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUARIO_LOG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SENHA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PET">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME_PET" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATA_NASCIMENTO" Type="DateTime" Precision="0" />
+    <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TAMANHO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RACA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RESTRICOES" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DESC_RESTRICOES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CODIGO_CLIENTE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AGENDAMENTO" Relationship="Self.FK_HORARIO_PET" FromRole="PET" ToRole="AGENDAMENTO" />
+    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_PET" FromRole="PET" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="SERVICO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODIGO_TIPO_SER" Type="Int32" Nullable="false" />
+    <Property Name="PRECO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AGENDAMENTO" Relationship="Self.FK_HORARIO_SERVICO" FromRole="SERVICO" ToRole="AGENDAMENTO" />
+    <NavigationProperty Name="TIPO_SERVICO" Relationship="Self.FK_TIPO_SERVICO" FromRole="SERVICO" ToRole="TIPO_SERVICO" />
+  </EntityType>
+  <EntityType Name="TIPO_SERVICO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME_TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESC_SERVICO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SERVICO" Relationship="Self.FK_TIPO_SERVICO" FromRole="TIPO_SERVICO" ToRole="SERVICO" />
+  </EntityType>
+  <Association Name="FK_HORARIO_PET">
+    <End Role="PET" Type="Self.PET" Multiplicity="1" />
+    <End Role="AGENDAMENTO" Type="Self.AGENDAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PET">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="AGENDAMENTO">
+        <PropertyRef Name="CODIGO_PET" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HORARIO_SERVICO">
+    <End Role="SERVICO" Type="Self.SERVICO" Multiplicity="1" />
+    <End Role="AGENDAMENTO" Type="Self.AGENDAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="AGENDAMENTO">
+        <PropertyRef Name="CODIGO_SERVICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_PET">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="PET" Type="Self.PET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="PET">
+        <PropertyRef Name="CODIGO_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_SERVICO">
+    <End Role="TIPO_SERVICO" Type="Self.TIPO_SERVICO" Multiplicity="1" />
+    <End Role="SERVICO" Type="Self.SERVICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_SERVICO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="SERVICO">
+        <PropertyRef Name="CODIGO_TIPO_SER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AnimalePetshop" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AGENDAMENTO" EntityType="Self.AGENDAMENTO" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+    <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" />
+    <EntitySet Name="LOGIN" EntityType="Self.LOGIN" />
+    <EntitySet Name="PET" EntityType="Self.PET" />
+    <EntitySet Name="SERVICO" EntityType="Self.SERVICO" />
+    <EntitySet Name="TIPO_SERVICO" EntityType="Self.TIPO_SERVICO" />
+    <AssociationSet Name="FK_HORARIO_PET" Association="Self.FK_HORARIO_PET">
+      <End Role="PET" EntitySet="PET" />
+      <End Role="AGENDAMENTO" EntitySet="AGENDAMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HORARIO_SERVICO" Association="Self.FK_HORARIO_SERVICO">
+      <End Role="SERVICO" EntitySet="SERVICO" />
+      <End Role="AGENDAMENTO" EntitySet="AGENDAMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_PET" Association="Self.FK_CLIENTE_PET">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="PET" EntitySet="PET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_SERVICO" Association="Self.FK_TIPO_SERVICO">
+      <End Role="TIPO_SERVICO" EntitySet="TIPO_SERVICO" />
+      <End Role="SERVICO" EntitySet="SERVICO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

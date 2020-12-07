@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AnimaleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AGENDAMENTO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DATA_AGENDAMENTO" Type="date" Nullable="false" />
+    <Property Name="HORA_AGENDAMENTO" Type="time" Precision="7" Nullable="false" />
+    <Property Name="CODIGO_SERVICO" Type="int" Nullable="false" />
+    <Property Name="CODIGO_PET" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME_CLI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DATA_NASCIMENTO" Type="date" Nullable="false" />
+    <Property Name="SEXO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CPF" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FUNCIONARIO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME_FUN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DATA_NASCIMENTO" Type="date" Nullable="false" />
+    <Property Name="SEXO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CPF" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USUARIO_LOG" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SENHA" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PET">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME_PET" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DATA_NASCIMENTO" Type="date" />
+    <Property Name="SEXO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TAMANHO" Type="varchar" MaxLength="50" />
+    <Property Name="RACA" Type="varchar" MaxLength="50" />
+    <Property Name="RESTRICOES" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="DESC_RESTRICOES" Type="varchar" MaxLength="200" />
+    <Property Name="CODIGO_CLIENTE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SERVICO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODIGO_TIPO_SER" Type="int" Nullable="false" />
+    <Property Name="PRECO" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_SERVICO">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME_TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESC_SERVICO" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_CLIENTE_PET">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="PET" Type="Self.PET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="PET">
+        <PropertyRef Name="CODIGO_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HORARIO_PET">
+    <End Role="PET" Type="Self.PET" Multiplicity="1" />
+    <End Role="AGENDAMENTO" Type="Self.AGENDAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PET">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="AGENDAMENTO">
+        <PropertyRef Name="CODIGO_PET" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HORARIO_SERVICO">
+    <End Role="SERVICO" Type="Self.SERVICO" Multiplicity="1" />
+    <End Role="AGENDAMENTO" Type="Self.AGENDAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="AGENDAMENTO">
+        <PropertyRef Name="CODIGO_SERVICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_SERVICO">
+    <End Role="TIPO_SERVICO" Type="Self.TIPO_SERVICO" Multiplicity="1" />
+    <End Role="SERVICO" Type="Self.SERVICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_SERVICO">
+        <PropertyRef Name="CODIGO" />
+      </Principal>
+      <Dependent Role="SERVICO">
+        <PropertyRef Name="CODIGO_TIPO_SER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AnimaleModelStoreContainer">
+    <EntitySet Name="AGENDAMENTO" EntityType="Self.AGENDAMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PET" EntityType="Self.PET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SERVICO" EntityType="Self.SERVICO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_SERVICO" EntityType="Self.TIPO_SERVICO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CLIENTE_PET" Association="Self.FK_CLIENTE_PET">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="PET" EntitySet="PET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HORARIO_PET" Association="Self.FK_HORARIO_PET">
+      <End Role="PET" EntitySet="PET" />
+      <End Role="AGENDAMENTO" EntitySet="AGENDAMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HORARIO_SERVICO" Association="Self.FK_HORARIO_SERVICO">
+      <End Role="SERVICO" EntitySet="SERVICO" />
+      <End Role="AGENDAMENTO" EntitySet="AGENDAMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_SERVICO" Association="Self.FK_TIPO_SERVICO">
+      <End Role="TIPO_SERVICO" EntitySet="TIPO_SERVICO" />
+      <End Role="SERVICO" EntitySet="SERVICO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

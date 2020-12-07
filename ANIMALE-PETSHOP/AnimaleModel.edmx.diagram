@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1719a459dc9c44da86ad96ec6e3327f2" Name="Diagram1">
+        <EntityTypeShape EntityType="AnimaleModel.AGENDAMENTO" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaleModel.CLIENTE" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaleModel.FUNCIONARIO" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaleModel.LOGIN" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaleModel.PET" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaleModel.SERVICO" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaleModel.TIPO_SERVICO" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="AnimaleModel.FK_HORARIO_PET" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaleModel.FK_HORARIO_SERVICO" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaleModel.FK_CLIENTE_PET" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaleModel.FK_TIPO_SERVICO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

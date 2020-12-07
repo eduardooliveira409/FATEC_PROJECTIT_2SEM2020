@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AnimaleModelStoreContainer" CdmEntityContainer="AnimalePetshop">
+    <EntitySetMapping Name="AGENDAMENTO">
+      <EntityTypeMapping TypeName="AnimaleModel.AGENDAMENTO">
+        <MappingFragment StoreEntitySet="AGENDAMENTO">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="DATA_AGENDAMENTO" ColumnName="DATA_AGENDAMENTO" />
+          <ScalarProperty Name="HORA_AGENDAMENTO" ColumnName="HORA_AGENDAMENTO" />
+          <ScalarProperty Name="CODIGO_SERVICO" ColumnName="CODIGO_SERVICO" />
+          <ScalarProperty Name="CODIGO_PET" ColumnName="CODIGO_PET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="AnimaleModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOME_CLI" ColumnName="NOME_CLI" />
+          <ScalarProperty Name="DATA_NASCIMENTO" ColumnName="DATA_NASCIMENTO" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONARIO">
+      <EntityTypeMapping TypeName="AnimaleModel.FUNCIONARIO">
+        <MappingFragment StoreEntitySet="FUNCIONARIO">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOME_FUN" ColumnName="NOME_FUN" />
+          <ScalarProperty Name="DATA_NASCIMENTO" ColumnName="DATA_NASCIMENTO" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGIN">
+      <EntityTypeMapping TypeName="AnimaleModel.LOGIN">
+        <MappingFragment StoreEntitySet="LOGIN">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="USUARIO_LOG" ColumnName="USUARIO_LOG" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PET">
+      <EntityTypeMapping TypeName="AnimaleModel.PET">
+        <MappingFragment StoreEntitySet="PET">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOME_PET" ColumnName="NOME_PET" />
+          <ScalarProperty Name="DATA_NASCIMENTO" ColumnName="DATA_NASCIMENTO" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="TAMANHO" ColumnName="TAMANHO" />
+          <ScalarProperty Name="RACA" ColumnName="RACA" />
+          <ScalarProperty Name="RESTRICOES" ColumnName="RESTRICOES" />
+          <ScalarProperty Name="DESC_RESTRICOES" ColumnName="DESC_RESTRICOES" />
+          <ScalarProperty Name="CODIGO_CLIENTE" ColumnName="CODIGO_CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERVICO">
+      <EntityTypeMapping TypeName="AnimaleModel.SERVICO">
+        <MappingFragment StoreEntitySet="SERVICO">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="CODIGO_TIPO_SER" ColumnName="CODIGO_TIPO_SER" />
+          <ScalarProperty Name="PRECO" ColumnName="PRECO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_SERVICO">
+      <EntityTypeMapping TypeName="AnimaleModel.TIPO_SERVICO">
+        <MappingFragment StoreEntitySet="TIPO_SERVICO">
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="NOME_TIPO" ColumnName="NOME_TIPO" />
+          <ScalarProperty Name="DESC_SERVICO" ColumnName="DESC_SERVICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

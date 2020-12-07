@@ -1,0 +1,122 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="layout.master.cs" Inherits="ANIMALE_PETSHOP.layout" %>
+
+<!DOCTYPE html>
+
+<html>
+    <head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
+    </script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/styleLayout.css">
+    <link rel="stylesheet" type="text/css" href="css/adminlte.css">
+      <!-- Theme style -->
+    <link rel="stylesheet" href="css/adminlte.min.css">
+</head>
+<body>
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><span class="material-icons">
+            menu
+            </span></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="home.aspx" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Logo -->
+      <a href="home.aspx" class="brand-link">
+        <span class="brand-text font-weight-light">Animale Petshop</span>
+      </a>
+  
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">João Vítor Fonseca</a>
+          </div>
+        </div>
+  
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item">
+              <a href="Home.aspx" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Cadastros
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="Cadastros/Funcionario.aspx" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Funcionarios</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="Cadastros/Cliente" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Clientes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="Cadastros/Pet" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pets</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+    <script type="text/javascript" src="js/srcipt.js"></script>
+    <script  type="text/javascript" src="js/js.js"></script>
+    <script  type="text/javascript" src="js/AdminLTE.js"></script>
+    <script  type="text/javascript" src="js/Layout.js"></script>
+    <script  type="text/javascript" src="js/PushMenu.js"></script>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+
+</html>
